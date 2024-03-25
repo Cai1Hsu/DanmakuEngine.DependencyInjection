@@ -1,0 +1,15 @@
+TODO:
+
+        // Step1: Make sure we have a valid constructor.
+        //      1. Check the count of the constructor(only public ones)
+        //      2. Check if the constructor marked with DependencyInjectionCreationAttribute
+        //          (1) if only one was marked, select it as our di ctor and analyze if al deps were registered.
+        //          (2) multiple -> report and `continue`.
+        //      3. If no one was marked:
+        //          (1) Check if there was only one pub ctor.
+        //          (2) if only one pub ctor: select as di ctor and `continue analyze deps`
+        //          (3) Else if multiple: report a warning and try find a paramless ctor.
+        //          (4) Else report a warning and try find a ctor where all deps were registered.
+        //          (5) if Single: select and `continue.`
+        //          (6) if multiple: report a warning
+        //          (7) Else report an Error and `continue`

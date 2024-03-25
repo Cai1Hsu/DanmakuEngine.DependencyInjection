@@ -1,30 +1,26 @@
 using DanmakuEngine.DependencyInjection;
 
 [ServiceProvider]
-// [Transient<string>]
-[Singleton<IMyProvider, MyProvider<string>>]
+// [Singleton<string>]
+// [Transient<IService, Service<string>>]
 public partial class MyProvider
 {
 }
 
-public interface IMyProvider
+interface IService
 {
 }
 
-public interface MyProvider<T> : IMyProvider
+public class Service<T> : IService
+    where T : Random
 {
-    // [DependencyInjectionCreation]
-    // public MyProvider(T a)
-    // {
-    // }
+    private readonly T _module;
 
-    // [DependencyInjectionCreation]
-    // public MyProvider(string a)
-    // {
+    public Service(T module)
+    {
+        _module = module;
+    }
 
-    // }
-
-    // public MyProvider()
-    // {
-    // }
+    public int Next()
+        => _module.Next();
 }
